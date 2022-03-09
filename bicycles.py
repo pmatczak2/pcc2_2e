@@ -18,4 +18,8 @@ bicycles = ['trek', 'cannondale', 'redline', 'specialized']
 print(bicycles[-1])
 
 # Using individual Values from a List
+supplies = ['pens', 'staples', 'flame-throwers', 'blinders']
+for i in range(len(supplies)):
+    print(f'Index {i} in supplies is: {supplies[i]}')
+
 
