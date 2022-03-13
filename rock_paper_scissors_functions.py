@@ -7,6 +7,13 @@ class Action(IntEnum):
     Paper = 1
     Scissors = 2
 
+
+victories = {
+    Action.Rock: [Action.Scissors],  # Rock beats scissors
+    Action.Paper: [Action.Rock],  # Paper beats rock
+    Action.Scissors: [Action.Paper]  # Scissors beats paper
+    }
+
 def get_user_selection():
     choices = [f"{action.name}[{action.value}]" for action in Action]
     choices_str = ", ".join(choices)
@@ -20,12 +27,6 @@ def get_computer_selection():
     return action
 
 def winner(user_action, computer_action):
-        victories = {
-            Action.Rock: [Action.Scissors],  # Rock beats scissors
-            Action.Paper: [Action.Rock],  # Paper beats rock
-            Action.Scissors: [Action.Paper]  # Scissors beats paper
-        }
-
         defeats = victories[user_action]
         if user_action == computer_action:
             print(f"Both players selected {user_action.name}. It's a tie!")
