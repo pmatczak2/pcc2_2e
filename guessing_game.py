@@ -8,8 +8,8 @@ mystery_number = random.randint(1, 5)
 
 while True:
     guesses = guesses + 1
-
     guess = int(input("Guess a number between 1 and 10: "))
+
     if guess == mystery_number:
         print("you guessed the number just right")
         print(f"It took you guesses {guesses}")
