@@ -5,7 +5,7 @@
 # using at least one list comprehension. (Hint: Remember list comprehensions from Exercise 7).
 import random
 
-random_list = [i for i in range(1, 15)]
+random_list = []
 
 for i in range(1, 15):
 	n = random.randint(1, 30)
