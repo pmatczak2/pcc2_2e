@@ -19,7 +19,7 @@ for j in range(1, 10):
 
 
 
-
+random.sample(population, k)
 
 c = list(set([i for i in random_list if i in random_list2]))
 print(c)
