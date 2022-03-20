@@ -2,26 +2,33 @@
 # then tell them whether they guessed too low, too high, or exactly right.
 
 import random
-guesses = 0
-mystery_number = random.randint(1, 5)
+
 
 def user_command():
-    total = int(input("Guess a number between 1 and 10: "))
+    total = int(input("Guess a number between 1 and 5: "))
     return total
 
-def get_winner(user_cation, computer_action):
-    if user_cation == computer_action:
+def get_winner(user_acation, computer_action):
+    if user_acation == computer_action:
         print("you guessed the number just right")
         print(f"It took you guesses {guesses}")
-
-    elif user_cation < computer_action:
+        return True
+    elif user_acation < computer_action:
         print("your guess is too low")
     else:
         print("you guessed too high")
+    return False
 
 while True:
-    guesses = guesses + 1
-    get_winner(user_command(), mystery_number)
+    guesses = 0
+    mystery_number = random.randint(1, 5)
+    while True:
+        guesses = guesses + 1
+        did_i_win = get_winner(user_command(), mystery_number)
+        if did_i_win:
+            break
+
+
     play_again = input('Would you like to keep playing? ')
     if play_again == 'n':
         break
