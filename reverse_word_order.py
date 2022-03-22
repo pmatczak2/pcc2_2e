@@ -2,8 +2,8 @@
 # user the same string, except with the words in backwards order.
 long_string = "string containing multiple words"
 
-def normal(i):
-    forward = long_string
+def normal(a):
+    forward = a
     return forward
 
 def backwards(n):
