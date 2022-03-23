@@ -3,15 +3,14 @@
 # every time the user asks for a new password. Include your run-time code in a main method.
 import random, string
 
-letters = random.sample(string.hexdigits + string.punctuation, k=16)
-for letter in letters:
-         print(letter, end="")
 
 
+letters = random.sample(string.hexdigits + string.punctuation, k= 16)
+fun = "".join(letters)
+print(fun)
 
-def password(length):
-    letter = string.hexdigits + string.punctuation
-    letter_result = ''.join(random.choice(letter) for i in range(length))
-    print(letter_result)
+def passsword(n):
+    size = "".join(random.choice(string.hexdigits + string.punctuation) for _ in range(n))
+    print(size)
 
-password(10)
+passsword(16)
