@@ -9,9 +9,12 @@ def main(num):
         print(b)
 
     for i in range(2, num):
+        x = a
+        y = b
         c = a + b
         a = b
         b = c
         print(c)
-
+        x, y = y, x + y
+        assert (x, y) == (a, b)
 main(10)

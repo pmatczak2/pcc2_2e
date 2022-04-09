@@ -21,7 +21,7 @@ def calculate(guessed_number):
             cows += 1
         elif guessed_number[i] in number:
             bulls += 1
-        return cows, bulls
+    return cows, bulls
 
 if __name__ == "__main__":
     while cow < 4:
@@ -29,6 +29,7 @@ if __name__ == "__main__":
         cow, bull = calculate(user_guessed)
         print(f"COWS {cow}")
         print(f"BULLS {bull}")
+        print(number)
         if cow == 4:
             print(f'Congratulation, you guessed {number} in {guessed} guesses')
         else:

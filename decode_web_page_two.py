@@ -9,4 +9,3 @@ soup = BeautifulSoup(result.text, 'html.parser')
 
 for index in soup.find_all('p'):
     print(index.text)
-
