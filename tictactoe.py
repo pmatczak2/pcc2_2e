@@ -48,7 +48,8 @@ def getBoardStr(board):
       {board['7']}|{board['8']}|{board['9']} 7 8 9'''
 
 def isValidSpace(board, space):
-    return space in ALL_SPACES and board[space] == BLANK
+    print(board)
+    return space in ALL_SPACES or board[space] == BLANK
 
 def isWinner(board, player):
     """Return True if plauer is a winner on this TTTBoard."""
