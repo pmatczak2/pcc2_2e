@@ -6,7 +6,10 @@ X, O, BLANK = 'X', 'O', ' ' # Constant for string values.
 def main():
     """Runs game of tic tak toe"""
     print('Welcome to tic tak toe!')
-    gameBoard = TTTBoard()  # Creates a TTT board object.
+    if input('Use mini board Y/N: ').lower().startswith('y'):
+        gameBoard = MiniBoard()  # Creates a MiniBoard object.
+    else:
+        gameBoard = TTTBoard()  # Create a TTTBoard object.
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 
     while True:
@@ -74,5 +77,27 @@ class TTTBoard:
         """Set the space on the board player."""
         self._spaces[space] = player
 
+
+class MiniBoard(TTTBoard):
+    def getBoardStr(self):
+        """Return a tiny text-representation of the board"""
+        # Change blank spaces to a '.'
+        for space in All_SPACES:
+            if self._spaces[space] == BLANK:
+                self._spaces[space] = '.'
+
+        boardStr = f'''
+          {self._spaces['1']}{self._spaces['2']}{self._spaces['3']} 123
+          {self._spaces['4']}{self._spaces['5']}{self._spaces['6']} 456
+          {self._spaces['7']}{self._spaces['8']}{self._spaces['9']} 789 '''
+
+        # change '.' back to blank spaces.
+        for space in All_SPACES:
+            if self._spaces[space] == '.':
+                self._spaces[space] = BLANK
+        return boardStr
+
 if __name__ == "__main__":
     main()
+
+
