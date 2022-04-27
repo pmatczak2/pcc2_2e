@@ -1,4 +1,5 @@
-# tictactoe_oop.py, an object_orianted tic-tac-toe game.
+import copy
+# tictactoe_oop.py, an object_orianted tic-tac-toe game
 
 All_SPACES = list('123456789')  # The keys for a TTT board.
 X, O, BLANK = 'X', 'O', ' ' # Constant for string values.
@@ -9,7 +10,7 @@ def main():
     if input('Use mini board Y/N: ').lower().startswith('y'):
         gameBoard = MiniBoard()  # Creates a MiniBoard object.
     else:
-        gameBoard = TTTBoard()  # Create a TTTBoard object.
+        gameBoard = HintBord()  # Create a TTTBoard object.
     currentPlayer, nextPlayer = X, O  # X goes first, O goes next.
 
     while True:
@@ -97,6 +98,34 @@ class MiniBoard(TTTBoard):
                 self._spaces[space] = BLANK
         return boardStr
 
+
+class HintBord(TTTBoard):
+    def getBoardStr(self):
+        """Return a text-representation of the board with hints."""
+        boardStr = super().getBoardStr()  # Call getBoardStr() in TTTBoard.
+
+        xCanWin = False
+        oCanWin = False
+        originalSpaces = self._spaces  # Backup _spaces
+        for space in All_SPACES:  # Check each space:
+            # Simulate X moving on this space:
+            self._spaces = copy.copy(originalSpaces)
+            if self._spaces[space]  == BLANK:
+                self._spaces[space] = X
+            if self.isWinner(X):
+                xCanWin = True
+            # simulate O moving on this space
+            self._spaces = copy.copy(originalSpaces)
+            if self._spaces[space] == BLANK:
+                self._spaces[space] = O
+            if self.isWinner(O):
+                oCanWin = True
+        if xCanWin:
+            boardStr += '\nX can win in one more move.'
+        if oCanWin:
+            boardStr += '\nO can win in one more move.'
+        self._spaces = originalSpaces
+        return boardStr
 if __name__ == "__main__":
     main()
 
