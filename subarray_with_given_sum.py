@@ -25,7 +25,7 @@ def subArraySum(arr, n, sum_):
         # return true
         if curr_sum == sum_:
             print("Sum found between indexes")
-            print("% d and % d" % (start, i - 1))
+            print(f"{start} and {i-1}")
             return 1
 
         # Add this element
